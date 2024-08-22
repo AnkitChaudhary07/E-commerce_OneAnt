@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
+import PhoneNumberLoginScreen from "./screens/PhoneNumberLoginScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,12 @@ export default function App() {
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="PhoneLogin"
+          component={PhoneNumberLoginScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

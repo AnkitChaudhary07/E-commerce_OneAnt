@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, ToastAndroid } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, ToastAndroid } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -20,8 +20,10 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>HomeScreen</Text>
-      <Button title="Log Out" onPress={logout} />
+      <Text style={styles.homeText}>HomeScreen</Text>
+      <TouchableOpacity style={styles.button} onPress={logout}>
+        <Text style={styles.buttonText}>Log Out</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -34,5 +36,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#f5cf35",
+  },
+  homeText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    margin: 20,
+  },
+  button: {
+    width: "40%",
+    backgroundColor: "#6200ea",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 25,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
