@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "110421435614",
+    "project_id": "e-commerce-oneant",
+    "storage_bucket": "e-commerce-oneant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110421435614:android:c590768c51d2b6dbbdce4f",
+        "android_client_info": {
+          "package_name": "com.ankit.oneant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110421435614-jq5o996u1ua2cvmemm0puu8jcf0uk8i8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQVupKM1V753E08whX_08euQBJV5elkfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110421435614-jq5o996u1ua2cvmemm0puu8jcf0uk8i8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "110421435614-985q5686fpaa8tt7umlt6gdvcemdeh69.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ankit7.OneAnt"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
