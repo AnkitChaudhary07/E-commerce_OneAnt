@@ -1,4 +1,5 @@
 import "react-native-gesture-handler";
+import { StatusBar } from "react-native";
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -6,8 +7,10 @@ import { StyleSheet, View, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import LoginScreen from "./screens/LoginScreen";
-import HomeScreen from "./screens/HomeScreen";
 import PhoneNumberLoginScreen from "./screens/PhoneNumberLoginScreen";
+import ProfileSetUpScreen from "./screens/ProfileSetUpScreen";
+import PickInterestsScreen from "./screens/PickInterestsScreen";
+import RootNavigator from "./tabs/RootNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,27 +39,46 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="LoginScreen">
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
+    <>
+      <StatusBar
+        barStyle="dark-content" // You can change this to "light-content" if your status bar should have white text/icons.
+        backgroundColor="#ffffff" // This sets the background color of the status bar.
+        translucent={true} // This ensures the status bar overlaps with the content.
+      />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="LoginScreen">
+          <Stack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
 
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
+          <Stack.Screen
+            name="PhoneLogin"
+            component={PhoneNumberLoginScreen}
+            options={{ headerShown: false }}
+          />
 
-        <Stack.Screen
-          name="PhoneLogin"
-          component={PhoneNumberLoginScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen
+            name="ProfileSetUp"
+            component={ProfileSetUpScreen}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="PickInterestsScreen"
+            component={PickInterestsScreen}
+            options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="RootNavigator"
+            component={RootNavigator}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

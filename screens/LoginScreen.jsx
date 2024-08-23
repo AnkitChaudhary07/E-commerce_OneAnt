@@ -61,7 +61,12 @@ const LoginScreen = () => {
             <View style={styles.line} />
           </View>
 
-          <TouchableOpacity style={styles.googleButton} onPress={login}>
+          <TouchableOpacity
+            style={styles.googleButton}
+            onPress={() => {
+              navigation.navigate("ProfileSetUp", {});
+            }}
+          >
             <Ionicons
               name="logo-google"
               size={24}
@@ -70,7 +75,12 @@ const LoginScreen = () => {
             />
             <Text style={styles.optionButtonText}>Continue with Google</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.facebookButton} onPress={login}>
+          <TouchableOpacity
+            style={styles.facebookButton}
+            onPress={() => {
+              navigation.navigate("ProfileSetUp", {});
+            }}
+          >
             <Ionicons
               name="logo-facebook"
               size={24}

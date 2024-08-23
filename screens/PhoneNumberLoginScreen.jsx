@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,31 +7,29 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
+  Alert,
 } from "react-native";
-import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation, CommonActions } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
 const PhoneNumberLoginScreen = () => {
   const navigation = useNavigation();
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  const login = async () => {
-    try {
-      await AsyncStorage.setItem("userToken", "dummy-token");
-      navigation.dispatch(
-        CommonActions.reset({
-          index: 0,
-          routes: [{ name: "HomeScreen" }],
-        })
+  const handleContinue = () => {
+    if (phoneNumber.length === 10) {
+      navigation.navigate("ProfileSetUp", { phoneNumber });
+    } else {
+      Alert.alert(
+        "Invalid Phone Number",
+        "Please enter a valid 10-digit phone number."
       );
-    } catch (e) {
-      console.error("Failed to save token", e);
     }
   };
+
   return (
     <ImageBackground
       source={require("../assets/images/phoneNumberLogin.png")}
@@ -38,7 +37,10 @@ const PhoneNumberLoginScreen = () => {
     >
       <SafeAreaView style={styles.safeArea}>
         {/* Close Button */}
-        <TouchableOpacity style={styles.closeButton}>
+        <TouchableOpacity
+          style={styles.closeButton}
+          onPress={() => navigation.goBack()}
+        >
           <Ionicons name="close" size={28} color="#000" />
         </TouchableOpacity>
 
@@ -48,6 +50,7 @@ const PhoneNumberLoginScreen = () => {
 
           {/* Phone Number Input */}
           <View style={styles.inputContainer}>
+            <Ionicons name="call" size={24} color="#000" />
             <View style={styles.countryContainer}>
               <Text style={styles.countryCode}>+91</Text>
               <Ionicons name="caret-down" size={20} color="#000" />
@@ -57,11 +60,16 @@ const PhoneNumberLoginScreen = () => {
               placeholder="98765 43210"
               keyboardType="numeric"
               maxLength={10}
+              value={phoneNumber}
+              onChangeText={setPhoneNumber}
             />
           </View>
 
           {/* Continue Button */}
-          <TouchableOpacity style={styles.continueButton} onPress={login}>
+          <TouchableOpacity
+            style={styles.continueButton}
+            onPress={handleContinue}
+          >
             <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
         </View>
